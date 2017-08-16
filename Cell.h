@@ -9,23 +9,32 @@
 using namespace std;
 
 class Cell {
-    // Attribute einer Zelle
-    int prev;    // Zeiger auf die vorhergehende Zelle in einer verketteten Liste
-    int next;    // Zeiger auf eine nachfolgende Zelle in einer verketteten Liste
 
-    // Zellenzaehler
-    static int cell_counter;   // Cell-Zaehler
+    // Pointer to the previous cell of this cell object in a linked list
+    int prev;
 
-    // ID jeder einzelnen Zelle
+    // Pointer to the next cell of this cell object in a linked list
+    int next;
+
+    // Counter to count cells
+    static int cell_counter;
+
+    // ID of every single cell
     const int myCounter = cell_counter;
 
-    // Konstanten -------------------------------
+    // Constant value to determine that a cell object has no previous or next cell yet
     const int defaultIndexNotSet = -2;
+
+    // Constant value to determine whether this cell object is a start (or a stop) of the linked list or not
     const int defaultIndexStartStop = -1;
 
 public:
-    Student stud;       // Student in einer Zelle
-    // Konstruktor ------------------------------
+
+    // Student stored in a cell
+    Student stud;
+
+    // Constructor
+    // The constructor of a cell automatically sets prev and next to the default value -2.
     Cell() {
         prev = defaultIndexNotSet;
         next = defaultIndexNotSet;
@@ -33,35 +42,43 @@ public:
     }
 
 
-    // Destruktor -------------------------------
+    // Destructor
     ~Cell() {
         --cell_counter;
     }
 
-    // Getter und Setter ------------------------
+    // Returns the previous cell of this cell object
     int getPrev() {
         return this->prev;
     }
+
+    // Returns the next cell of this cell object
     int getNext() {
         return this->next;
     }
+
+    // Returns the matriculation number of this cell object
     int getMatrikelnummer() {
         return this->stud.getMatrikelnummer();
     }
+
+    // Method sets the previous cell of this cell object
     void setPrev(int p) {
         prev = p;
     }
+
+    // Method sets the next cell of this cell object
     void setNext(int n) {
         next = n;
     }
+
+    // Returns the actual value of the cell counter
     int get_cell_counter() const{
         return myCounter;
     };
 
-    // Sonstige Methoden ------------------------
-    // Anzeigen der Werte jeder Zelle
+    // Method prints every value of this cell object to the screen
     void printInfo() {
-        // TODO Ausgabe für Abgabe überarbeiten
         cout << "Student " << get_cell_counter() << ": ";
         cout << stud;
         cout << " (prev: " << prev << ", next: " << next << ")" << endl;

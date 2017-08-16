@@ -21,7 +21,7 @@ public:
 
     private:
         int highestNumber;
-        int start_freespace = 0;        // Zeigt auf den ersten freuen Platz
+        int start_freespace = 0;        // Zeigt auf den ersten freien Platz
         int pointer;
 
     public:
